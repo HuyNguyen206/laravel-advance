@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MacroController;
 use App\Http\Controllers\PayOrderController;
 use App\Http\Controllers\PipelineController;
 use App\Post;
@@ -16,6 +17,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('macro', [MacroController::class, 'macro']);
 Route::get('pipeline-post', [PipelineController::class, 'pipelineFilter']);
 Route::get('posts', function (){
     return Post::all();

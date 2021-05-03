@@ -5,9 +5,11 @@ namespace App\Providers;
 use App\Billing\BankPaymentGateway;
 use App\Billing\CreditPaymentGateway;
 use App\Billing\PaymentGatewayContract;
+use App\Mixins\StrMixins;
 use App\UploadService;
 use App\UploadServiceFacade;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Str;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -39,5 +41,12 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         //
+        Str::macro('showName', function($name = 'huy'){
+            return $name.'-the first one';
+        });
+//        Str::macro('prefix', function($prefix, $name = 'huy'){
+//            return $prefix.'-'.$name;
+//        });
+        Str::mixin(new StrMixins());
     }
 }

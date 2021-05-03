@@ -21,11 +21,12 @@ class PipelineController extends Controller
             ])
             ->thenReturn();
 //        DB::enableQueryLog();
-        $posts =  $posts->get()->map(function ($post) {
-            return $post->only(['name', 'active']);
-        });
+//        $posts =  collect($posts->map(function ($post) {
+//            return $post->only(['name', 'active']);
+//        }))->paginate(5);
+        $posts = $posts->paginate(5);
 //        dd(DB::getQueryLog());
-        return $posts;
+        return view('posts', compact('posts'));
 //        return $posts->get()->makeVisible(['name', 'active']);
     }
 }
