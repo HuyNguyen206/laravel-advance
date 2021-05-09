@@ -17,6 +17,13 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('test', function (){
+    $items = [
+        'reactjs', 'angular', 'python'
+    ];
+//    $items = 'kkk';
+    return view('test-component', compact('items'));
+});
 Route::get('macro', [MacroController::class, 'macro']);
 Route::get('pipeline-post', [PipelineController::class, 'pipelineFilter']);
 Route::get('posts', function (){
