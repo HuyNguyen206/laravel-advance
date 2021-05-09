@@ -17,7 +17,15 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('test', function (){
+Route::get('test-http', function () {
+    $response = \Illuminate\Support\Facades\Http::post('https://jsonplaceholder.typicode.com/posts', [
+        'title' => 'huy',
+        'body' => 'hohoho',
+        'userId' => 4,
+    ]);
+    dd($response->offsetGet('id'));
+});
+Route::get('test', function () {
     $items = [
         'reactjs', 'angular', 'python'
     ];
@@ -26,11 +34,11 @@ Route::get('test', function (){
 });
 Route::get('macro', [MacroController::class, 'macro']);
 Route::get('pipeline-post', [PipelineController::class, 'pipelineFilter']);
-Route::get('posts', function (){
+Route::get('posts', function () {
     return Post::all();
 });
-Route::get('upload', function (){
-   UploadServiceFacade::upload('12 kb', 'huy', true);
+Route::get('upload', function () {
+    UploadServiceFacade::upload('12 kb', 'huy', true);
     UploadServiceFacade::uploadFail();
 //    UploadServiceFacade::uploadTestNotExist();
 });
