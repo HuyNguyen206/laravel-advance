@@ -12,5 +12,6 @@ class sdad extends Seeder
     public function run()
     {
         //
+        "hii";
     }
 }
